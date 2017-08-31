@@ -11,7 +11,6 @@
 
 @implementation UIViewController (Admob)
 
-
 #pragma mark - Admob
 
 - (void)showAdmobBanner:(CGRect)frame
