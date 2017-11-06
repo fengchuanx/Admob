@@ -33,7 +33,9 @@
         [self addSubview:adView];
         
         GADRequest *request = [GADRequest request];
-        request.testDevices = @[ kGADSimulatorID ];
+#ifdef DEBUG
+        request.testDevices = @[ kGADSimulatorID, @"f8bb43a77f9144ab3000965d8f795a2b"];
+#endif
         [adView loadRequest:request];
     }
     return self;

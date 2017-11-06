@@ -11,6 +11,7 @@
 
 @implementation UIViewController (Admob)
 
+
 #pragma mark - Admob
 
 - (void)showAdmobBanner:(CGRect)frame
@@ -38,20 +39,24 @@
     request.testDevices = @[
                             @"kGADSimulatorID",
                             @"f8231c85289a86089a541f6318fe5e5f",  // iphone4s
-                            @"f8b4c976eaaf84ec7ca039fdf5aa5a1e"
+                            @"f8b4c976eaaf84ec7ca039fdf5aa5a1e",
+                            @"f8bb43a77f9144ab3000965d8f795a2b"
                             ];
 #endif
-    
     [self.mobbannerView loadRequest:request];
     [superView addSubview:self.mobbannerView];
+    self.mobbannerView.hidden = YES;
 }
 
 #pragma mark - GADBannerViewDelegate
 
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView;
 {
+    self.mobbannerView.hidden = NO;
     if (self.success) {
-        self.success();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.success();
+        });
     }
     //    NSLog(@"%s", __func__);
 }
@@ -59,6 +64,7 @@
 /// connectivity or ad availablility (i.e., no fill).
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error; {
     //    NSLog(@"%s info%@", __func__, error.localizedDescription);
+    self.mobbannerView.hidden = YES;
 }
 
 - (GADBannerView *)mobbannerView {

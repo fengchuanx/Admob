@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//@import GoogleMobileAds;
-#import <GoogleMobileAds/GoogleMobileAds.h>
+@import GoogleMobileAds;
 
 @interface UIViewController (Admob) <GADBannerViewDelegate>
 
