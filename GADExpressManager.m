@@ -7,7 +7,7 @@
 //
 
 #import "GADExpressManager.h"
-@import GoogleMobileAds;
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 @interface GADExpressManager () <GADNativeExpressAdViewDelegate, GADVideoControllerDelegate>
 
